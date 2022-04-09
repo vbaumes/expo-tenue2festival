@@ -14,8 +14,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import HomePageScreen from '../screens/HomePageScreen';
+import BurgerScreen from '../screens/BurgerScreen';
+import WishlistScreen from '../screens/WishlistScreen';
+import NewsScreen from '../screens/NewsScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -58,15 +60,15 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="HomePage"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+        name="HomePage"
+        component={HomePageScreen}
+        options={({ navigation }: RootTabScreenProps<'HomePage'>) => ({
+          title: 'Accueil',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
@@ -85,10 +87,26 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Burger"
+        component={BurgerScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Categories',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Wishlist"
+        component={WishlistScreen}
+        options={{
+          title: 'Wishlist',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="News"
+        component={NewsScreen}
+        options={{
+          title: 'News',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
