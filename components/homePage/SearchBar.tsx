@@ -21,16 +21,9 @@ const SearchBar: React.FC<Props> = ({term, onTermChange, onTermSubmit}) => {
 };
 
 const styles = StyleSheet.create({
-  backgroundStyle: {
-    backgroundColor: '#F0EEEE',
-    
-    marginHorizontal: 15,
-    flexDirection: 'row',
-  },
   inputStyle: {
     backgroundColor: '#F0EEEE',
     borderRadius: 5,
-    flex: 1.5,
     paddingLeft: 10,
   },
 });
