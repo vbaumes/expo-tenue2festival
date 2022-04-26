@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import Header from '../components/homePage/Header';
@@ -10,7 +10,9 @@ export default function HomePageScreen({ navigation }: RootTabScreenProps<'HomeP
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        <Text>Contenu</Text>
+        <TouchableOpacity onPress={() => {navigation.navigate('OptinForm')}}>
+          <Text>S'inscrire  la newsletter</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -18,6 +18,7 @@ import HomePageScreen from '../screens/HomePageScreen';
 import BurgerScreen from '../screens/BurgerScreen';
 import WishlistScreen from '../screens/WishlistScreen';
 import NewsScreen from '../screens/NewsScreen';
+import OptinFormScreen from '../screens/OptinFormScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -42,6 +43,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="OptinForm" component={OptinFormScreen} options={{ title: 'Inscription à la newsletter' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>

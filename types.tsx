@@ -29,6 +29,7 @@ export type RootTabParamList = {
   Burger: undefined;
   Wishlist: undefined;
   News: undefined;
+  OptinForm: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
