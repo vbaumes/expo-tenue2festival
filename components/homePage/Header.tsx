@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { View, Text } from '../Themed';
-import SearchBar from './SearchBar';
+import SearchBar from '../SearchBar';
 
 
 const Header: React.FC = ({}) => {
