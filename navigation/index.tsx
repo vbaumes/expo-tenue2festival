@@ -8,7 +8,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName } from 'react-native';
+import PLPScreen from '../screens/PLPScreen';
+import PDPScreen from '../screens/PDPScreen';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -19,7 +21,7 @@ import BurgerScreen from '../screens/BurgerScreen';
 import WishlistScreen from '../screens/WishlistScreen';
 import NewsScreen from '../screens/NewsScreen';
 import OptinFormScreen from '../screens/OptinFormScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { RootStackParamList, RootTabParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -44,6 +46,8 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="OptinForm" component={OptinFormScreen} options={{ title: 'Inscription à la newsletter' }} />
+      <Stack.Screen name="PLPScreen" component={PLPScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="PDPScreen" component={PDPScreen} options={{ headerShown: false }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -62,7 +66,6 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="HomePage"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>

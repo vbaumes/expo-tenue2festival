@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { FlatList, StyleSheet, Text } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
 import Categorie from '../components/burger/Categorie';
 import Gender from '../components/burger/Gender';
@@ -11,11 +11,11 @@ export default function BurgerScreen() {
   useEffect(() => {
     const asyncFunction = async () => {
       try {
-        const dataCategories = await fetch('http://192.168.43.54:8000/api/categories?page=1');
+        const dataCategories = await fetch('http://192.168.1.176:8000/api/categories?page=1');
         const dataCategoriesJson = await dataCategories.json();
         setCategories(dataCategoriesJson['hydra:member']);
 
-        const dataGender = await fetch('http://192.168.43.54:8000/api/genders?page=1');
+        const dataGender = await fetch('http://192.168.1.176:8000/api/genders?page=1');
         const dataGenderJson = await dataGender.json();
         dataGenderJson['hydra:member'].pop()
         setGender(dataGenderJson['hydra:member']);
@@ -25,15 +25,7 @@ export default function BurgerScreen() {
     }
     asyncFunction();
   }, [])
-
-  const handleSubmit = (categorie: string) => {
-    console.log(categorie)
-  }
   
-  const handleGender = (name: string) => {
-    console.log(name);
-  }
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -43,16 +35,16 @@ export default function BurgerScreen() {
           keyExtractor={(item) => 'gender_' + item["id"]}
           renderItem={({ item }) => {
             return (
-              <Gender name={item["name"]} putGender={(name: string) => handleGender(name)} />
+              <Gender name={item["name"]} />
             );
           }}
         />
       <FlatList
           data={categories}
-          keyExtractor={(item) => 'categorie_' + item["id"]}
+          keyExtractor={(item) => 'category_' + item["id"]}
           renderItem={({ item }) => {
             return (
-              <Categorie name={item["name"]} goTo={(categorie: string) => handleSubmit(categorie)}/>
+              <Categorie name={item["name"]} />
             );
           }}
         />
@@ -66,7 +58,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   genderContainer: {
-    backgroundColor: 'green',
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
