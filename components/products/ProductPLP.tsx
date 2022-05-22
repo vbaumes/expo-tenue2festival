@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { View, Text } from '../Themed';
+const formatNumber = require('../../utils/format');
 
 type ProductPLPType = {
   id: Number,
@@ -11,11 +12,6 @@ type ProductPLPType = {
 }
 
 const ProductPLP: React.FC<ProductPLPType> = ({id, title, price, shortDescription, handleSubmit}) => {
-
-  const formatNumber = (number: Number) => {
-    const array = number.toString().split('');
-    return array.slice(0, -2).join('') + ',' + array.slice(-2, array.length).join('') + '€';
-  }
 
   return (
     <View style={styles.container}>

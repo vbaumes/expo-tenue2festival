@@ -10,18 +10,18 @@ export default function BurgerScreen() {
 
   useEffect(() => {
     const asyncFunction = async () => {
-      try {
-        const dataCategories = await fetch('http://192.168.1.176:8000/api/categories?page=1');
-        const dataCategoriesJson = await dataCategories.json();
-        setCategories(dataCategoriesJson['hydra:member']);
-
-        const dataGender = await fetch('http://192.168.1.176:8000/api/genders?page=1');
-        const dataGenderJson = await dataGender.json();
-        dataGenderJson['hydra:member'].pop()
-        setGender(dataGenderJson['hydra:member']);
-      } catch(e) {
-        console.log(e);
-      }
+      fetch('http://192.168.38.1:8000/api/categories')
+          .then(data => data.json())
+          .then(result => setCategories(result['hydra:member']))
+          .catch(e => console.log(e));
+        
+      fetch('http://192.168.38.1:8000/api/genders')
+          .then(data => data.json())
+          .then(result => {
+            result['hydra:member'].pop();
+            setGender(result['hydra:member'])
+          })
+          .catch(e => console.log(e));
     }
     asyncFunction();
   }, [])

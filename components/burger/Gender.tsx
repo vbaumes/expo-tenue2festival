@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   notSelected: {
     backgroundColor: 'blue',
     height: 75,
-    width: 180,
+    width: 200,
     margin: 'auto',
     borderColor: 'black',
     borderWidth: 1,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   isSelected: {
     backgroundColor: 'green',
     height: 75,
-    width: 180,
+    width: 200,
     margin: 'auto',
     borderColor: 'black',
     borderWidth: 1,
