@@ -1,5 +1,5 @@
+import React from "react";
 import { TextInput, StyleSheet } from "react-native";
-import { View } from "../Themed";
 
 type TextInputProps = {
   term: string;

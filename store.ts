@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { linkToSliceReducer } from './store/linkToSliceReducer';
+import { wishlistSliceReducer } from './store/wishlistSliceReducer';
 
 export const store = configureStore({
   reducer: {
-    linkTo: linkToSliceReducer
+    linkTo: linkToSliceReducer,
+    wishlist: wishlistSliceReducer
   },
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware({

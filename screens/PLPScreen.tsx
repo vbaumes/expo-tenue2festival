@@ -6,6 +6,7 @@ import { RootState } from '../store';
 import ProductPLP from '../components/products/ProductPLP';
 import { useNavigation } from '@react-navigation/native';
 import { set_product } from '../store/linkToSliceReducer';
+import { BASE_URL } from "@env";
 
 export default function PLPScreen() {
   const [products, setProducts] = useState([]);
@@ -16,7 +17,8 @@ export default function PLPScreen() {
   useEffect(() => {
     const asyncFunction = async () => {
       const params = (linkTo.gender.length > 0) ? `gender=${linkTo.gender}&categorie=${linkTo.category}` : `categorie=${linkTo.category}`;
-      const data = await fetch(`http://192.168.1.176:8000/api/products?page=1&gender=unisexe&${params}`);
+      `${BASE_URL}products?page=1&gender=unisexe&${params}`
+      const data = await fetch(`${BASE_URL}products?page=1&gender=unisexe&${params}`);
 
       const dataJSON = await data.json()
         .then(dataJSON => {
