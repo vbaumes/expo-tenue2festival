@@ -33,18 +33,21 @@ const styles = StyleSheet.create({
     container: {
       width: 150,
       height: 300,
-      marginHorizontal: 10
+      marginHorizontal: 10,
+      borderColor: 'black',
+      borderWidth: 1
     },
     image: {
-      width: 150,
+      width: 148,
       height: 200,
     },
     details: {
       display: 'flex', 
       alignItems: 'flex-start', 
-      height: 100,
+      height: 98,
       padding: 5,
-      backgroundColor: 'green'
+      borderTopWidth: 1,
+      borderTopColor: 'black'
     },
     text: {
       color: 'blue'

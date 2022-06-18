@@ -7,7 +7,9 @@ import MyTextInput from '../components/common/MyTextInput';
 import OptinReducer from '../reducers/OptinReducer';
 import MyGradientText from '../components/common/MyGradientText';
 
-export default function OptinFormScreen() {
+export default function OptinFormScreen({ route }) {
+    const { email } = route.params;
+    console.log(email);
     const OPTIN_FORM = [
         { name: "Nom", type: "setLastname", textContentType: "name" },
         { name: "Prénom", type: "setFirstname", textContentType: "name" },
@@ -16,7 +18,7 @@ export default function OptinFormScreen() {
     const [state, dispatch] = useReducer(OptinReducer, {
         lastname: '',
         firstname: '',
-        email: ''
+        email: email
     });
     const [errorMsg, setErrorMsg] = useState([]);
 
