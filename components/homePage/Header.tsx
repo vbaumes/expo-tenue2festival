@@ -1,49 +1,47 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { View, Text } from '../Themed';
+import React from 'react';
+import { StyleSheet, Image } from 'react-native';
+import { View } from '../Themed';
 import SearchBar from '../SearchBar';
-
+import { AntDesign } from '@expo/vector-icons';
 
 const Header: React.FC = ({}) => {
-    const [term, setTerm] = useState('');
-
-    const handleSubmit = () => {
-    console.log(term);
-    }
   return (
     <View style={styles.header}>
-    <View style={styles.logoContainer}>
-      <Text style={styles.logo}>Logo</Text>
+      <Image
+        style={styles.icon}
+        source={require("../../assets/picto/t2F.png")}
+      />
+      <View style={styles.searchBarContainer}>
+        <AntDesign size={20} name="search1" />
+        <SearchBar />
+      </View>
     </View>
-    <View style={styles.searchBarContainer}>
-      <SearchBar term={term} onTermChange={(newTerm: React.SetStateAction<string>) => {setTerm(newTerm)}} onTermSubmit={handleSubmit} />
-    </View>
-  </View>
   );
 };
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: 20,
-        paddingHorizontal: 30,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flex: 1,
+      paddingTop: 20,
+      paddingHorizontal: 30,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: 20
     },
-    logoContainer: {
-      flex: 1,
-      paddingRight: 10,
+    icon: {
+      width: 30,
+      height: 30
     },
     searchBarContainer: {
-      flex: 1.5
-    },
-    logo: {
-      backgroundColor: 'blue',
-      height: 40,
-      width: 40,
+      display: 'flex',
+      flexDirection: 'row',
+      width: 150
     }
 });
 
 export default Header;
+
+function set_term(categorie: any): any {
+  throw new Error('Function not implemented.');
+}

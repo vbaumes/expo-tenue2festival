@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, Image, StyleSheet } from 'react-native';
 import PLPScreen from '../screens/PLPScreen';
 import PDPScreen from '../screens/PDPScreen';
 
@@ -74,23 +74,30 @@ function BottomTabNavigator() {
         component={HomePageScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />
+          title: '',
+          tabBarIcon: ({ color }) => <Image
+          style={styles.icon}
+          source={require("../assets/picto/t2F.png")}
+        />
         }}
       />
       <BottomTab.Screen
         name="Burger"
         component={BurgerScreen}
         options={{
-          title: 'Categories',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: () => <Image
+            style={styles.icon}
+            source={require("../assets/picto/Burger.png")}
+          />,
         }}
       />
       <BottomTab.Screen
         name="Wishlist"
         component={WishlistScreen}
         options={{
-          title: 'Wishlist',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: () => <TabBarIcon name="heart" color="black" />,
         }}
       />
       <BottomTab.Screen
@@ -105,6 +112,13 @@ function BottomTabNavigator() {
   );
 }
 
+const styles = StyleSheet.create({
+  icon: {
+    width: 30,
+    height: 30
+  },
+});
+
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
@@ -112,5 +126,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={25} style={{ marginBottom: -3 }} {...props} />;
 }
