@@ -3,7 +3,7 @@ const OptinReducer = (
     action: { type: string; payload: any }
   ) => {
     switch (action.type) {
-      case "setlastName":
+      case "setLastname":
         return { ...state, lastname: action.payload };
       case "setFirstname":
         return { ...state, firstname: action.payload };

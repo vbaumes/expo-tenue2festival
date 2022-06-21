@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-let initialState: { category: string; gender: string; product: Object; term: string } = {
-    category: '',
+let initialState: { category: number; categoryName: string; gender: string; product: Object; term: string } = {
+    category: 0,
+    categoryName: '',
     gender: '',
     product: {},
     term: ''
@@ -14,6 +15,9 @@ export const linkToSlice = createSlice({
     set_category: (state, action) => {
       return { ...state, category: action.payload };
     },
+    set_categoryName: (state, action) => {
+      return { ...state, categoryName: action.payload };
+    },
     set_gender: (state, action) => {
       return { ...state, gender: action.payload };
     },
@@ -25,5 +29,5 @@ export const linkToSlice = createSlice({
     }
   },
 });
-export const { set_category, set_gender, set_product, set_term } = linkToSlice.actions;
+export const { set_category, set_categoryName, set_gender, set_product, set_term } = linkToSlice.actions;
 export const linkToSliceReducer = linkToSlice.reducer;

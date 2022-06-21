@@ -21,15 +21,15 @@ export default function PLPScreen() {
       let params: string = '';
       
       if (linkTo.term.length > 0) {
-        params += `name=${linkTo.term}`;
+        params += `title=${linkTo.term}`;
       } else if (linkTo.gender.length > 0) {
-        params = `gender=${linkTo.gender}&categorie=${linkTo.category}`;
+        params = `gender=${linkTo.gender}&category=${linkTo.category}`;
       } else {
-        params = `categorie=${linkTo.category}`;
+        params = `gender=unisexe&category=${linkTo.category}`;
       }
 
-      const data = await fetch(`${BASE_URL}products?page=1&gender=unisexe&${params}`);
-
+      const data = await fetch(`${BASE_URL}products?page=1&${params}`);
+      
       const dataJSON = await data.json()
         .then(dataJSON => {
           dataJSON['hydra:member']
@@ -56,7 +56,7 @@ export default function PLPScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{linkTo.category}</Text>
+      {linkTo.term ? <Text style={styles.title}>Votre recherche "{linkTo.term}" :</Text> : <Text style={styles.title}>{linkTo.categoryName}</Text>}
       {child}
       <FlatList
         horizontal

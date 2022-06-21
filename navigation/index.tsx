@@ -104,7 +104,7 @@ function BottomTabNavigator() {
         name="News"
         component={NewsScreen}
         options={{
-          title: 'News',
+          title: '',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

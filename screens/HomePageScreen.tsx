@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   image: {
-    width: '95%'
+    width: '95%',
+    height: '60%'
   }
 });
