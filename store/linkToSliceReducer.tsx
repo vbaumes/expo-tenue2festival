@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-let initialState: { category: number; categoryName: string; gender: string; product: Object; term: string } = {
+let initialState: { category: number; categoryName: string; gender: number; product: Object; term: string } = {
     category: 0,
     categoryName: '',
-    gender: '',
+    gender: 0,
     product: {},
     term: ''
 };

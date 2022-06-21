@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import ProductPLP from '../components/products/ProductPLP';
+import ProductWishlist from '../components/products/ProductWishlist';
 import { Text, View } from '../components/Themed';
 import { RootState } from '../store';
 
@@ -15,7 +15,7 @@ export default function WishlistScreen() {
                           horizontal
                           contentContainerStyle={styles.productsContainer}
                           data={wishlist}
-                          renderItem={({ item }) => <ProductPLP
+                          renderItem={({ item }) => <ProductWishlist
                             id={item["id"]}
                             title={item["title"]} 
                             price={item["price"]} 
@@ -33,6 +33,7 @@ export default function WishlistScreen() {
   
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Votre Wishlist :</Text>
       {child}
     </View>
   );
@@ -40,7 +41,6 @@ export default function WishlistScreen() {
 
 const styles = StyleSheet.create({
   productsContainer: {
-    backgroundColor: 'blue',
     width: 400
   },
   container: {
@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    marginBottom: 30
   }
 });

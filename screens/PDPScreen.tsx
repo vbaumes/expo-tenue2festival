@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { View, Text } from '../components/Themed';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
@@ -15,6 +15,7 @@ const PDPScreen: React.FC = () => {
   let wishlist = useSelector((state: RootState) => state.wishlist.products);
   let product = useSelector((state: RootState) => state.linkTo.product);
   const [isInWislist, setIsInWishlist] = useState(false);
+  console.log(product);
 
   // to parse description html
   let source = {
@@ -41,7 +42,7 @@ const PDPScreen: React.FC = () => {
   const removeFromWishlist = () => {
     const result = wishlist.filter((el) => el !== product);
     if (result.length > 0) {
-      dispatch(set_products(products));
+      dispatch(set_products(result));
     } else {
       dispatch(set_products([]));
     }
@@ -57,6 +58,23 @@ const PDPScreen: React.FC = () => {
     setIsInWishlist(!isInWislist);
   }
 
+  const OpenURLButton: React.FC = ({ url }) => {
+    console.log(url)
+    const handlePress = useCallback(async () => {
+      const supported = await Linking.canOpenURL(url);
+  
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        console.log(`Don't know how to open this URL: ${url}`);
+      }
+    }, [url]);
+  
+    return <TouchableOpacity onPress={handlePress} >
+      <MyGradientText style={styles.button} text='Acheter'/>
+    </TouchableOpacity>;
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.image}>Image</Text>
@@ -69,7 +87,7 @@ const PDPScreen: React.FC = () => {
         </View>
         <Text style={styles.title}>{product.title}</Text>
         <View style={styles.buttonContainer} >
-          <MyGradientText style={styles.button} text={'Acheter'}/>
+          <OpenURLButton url={product.link} />
         </View>
         <View style={styles.description}>
           <RenderHtml

@@ -50,6 +50,7 @@ export default function OptinFormScreen() {
                 body: JSON.stringify(optin)
             }).then(res => res.json())
                 .then(res => {
+                    console.log(res);
                     if (res["id"]) {
                         setChild(true);
                     }

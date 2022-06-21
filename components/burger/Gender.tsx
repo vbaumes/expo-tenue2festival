@@ -12,7 +12,7 @@ export type Props = {
 const Gender: React.FC<Props> = ({name, id}) => {
   const dispatch = useDispatch();
   let genderStyle = useSelector((state: RootState) => {
-    return (state.linkTo.gender === name) ? styles.isSelected : styles.notSelected;
+    return (state.linkTo.gender === id) ? styles.isSelected : styles.notSelected;
   })
   
   return (
